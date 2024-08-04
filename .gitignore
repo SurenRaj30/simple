@@ -1,0 +1,49 @@
+# Build outputs
+target/
+build/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Logs
+*.log
+logs/
+
+# IDE specific files
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# Environment and sensitive files
+application.properties
+application.yml
+*.env
+
+# Compiled files
+*.class
+
+# Temporary files
+*.tmp
+.tmp/
