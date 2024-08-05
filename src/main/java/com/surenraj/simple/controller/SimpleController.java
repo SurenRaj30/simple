@@ -17,6 +17,7 @@ import java.util.List;
 @Validated
 @RequestMapping("/api/v1")
 public class SimpleController {
+    //TODO: use controller advice to handle exception
     //logger
     private static final Logger logger = LoggerFactory.getLogger(SimpleController.class);
     private static final String TOPIC = "first_topic";
@@ -26,14 +27,16 @@ public class SimpleController {
     private KafkaConsumerService kafkaConsumerService;
     @PostMapping("/produce")
     public ResponseEntity<String> produceRequest(@RequestBody ResponseObj req) {
-       //debugging
+       // debugging
         logger.info("Received request with name: {} and age: {}", req.getName(), req.getAge());
+        // sending req to specified topic
         kafkaTemplate.send(TOPIC, req);
-       //return success message
+       // return success message
         return new ResponseEntity<>("Message sent to Kafka topic successfully", HttpStatus.OK);
     }
     @GetMapping("/consume")
     public List<ResponseObj> consumeMessages() {
+        // to consume messages in the topic
         return kafkaConsumerService.getMessages();
     }
     //method to handle exception
